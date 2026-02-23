@@ -322,6 +322,7 @@ skin_tone_outfits = {
 
 # Load once (important)
 df = pd.read_excel("styleshop.xlsx")
+df = df.fillna("")
 
 df["color"] = df["color"].str.lower().str.strip()
 df["category"] = df["category"].str.lower().str.strip()
