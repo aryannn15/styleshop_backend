@@ -1,6 +1,6 @@
 import pandas as pd
 
-men = {
+male = {
 
 "slim": {
 "date": [
@@ -15,7 +15,7 @@ men = {
 {"top_color":"black","top_type":"striped shirt","bottom_color":"dark blue","bottom_type":"jeans"}
 ],
 
-"hangout": [
+"casual": [
 {"top_color":"black","top_type":"hoodie","bottom_color":"light blue","bottom_type":"jeans"},
 {"top_color":"peach","top_type":"printed tee","bottom_color":"","bottom_type":"shorts"},
 {"top_color":"sage green","top_type":"shirt","bottom_color":"grey","bottom_type":"jeans"}
@@ -43,7 +43,7 @@ men = {
 {"top_color":"navy","top_type":"printed tee","bottom_color":"dark blue","bottom_type":"jeans"}
 ],
 
-"hangout": [
+"casual": [
 {"top_color":"blue","top_type":"hoodie","bottom_color":"light","bottom_type":"jeans"},
 {"top_color":"white","top_type":"printed tee","bottom_color":"","bottom_type":"shorts"},
 {"top_color":"black","top_type":"hoodie","bottom_color":"","bottom_type":"cargo pants"}
@@ -71,7 +71,7 @@ men = {
 {"top_color":"ochre","top_type":"leather jacket","bottom_color":"dark","bottom_type":"jeans"}
 ],
 
-"hangout": [
+"casual": [
 {"top_color":"pine","top_type":"hoodie","bottom_color":"","bottom_type":"cargo pants"},
 {"top_color":"graphic","top_type":"tee","bottom_color":"","bottom_type":"shorts"},
 {"top_color":"black","top_type":"hoodie","bottom_color":"grey","bottom_type":"jeans"}
@@ -99,7 +99,7 @@ men = {
 {"top_color":"denim","top_type":"jacket","bottom_color":"black","bottom_type":"jeans"}
 ],
 
-"hangout": [
+"casual": [
 {"top_color":"black","top_type":"tee","bottom_color":"","bottom_type":"cargo pants"},
 {"top_color":"dark","top_type":"hoodie","bottom_color":"","bottom_type":"jeans"},
 {"top_color":"","top_type":"overshirt","bottom_color":"dark","bottom_type":"jeans"}
@@ -115,7 +115,7 @@ men = {
 }
 
 
-women = {
+female = {
 
 # =========================
 "pear": {
@@ -132,7 +132,7 @@ women = {
 {"top_color":"silver","top_type":"halter neck sequined","bottom_color":"black","bottom_type":"wide leg leggings"}
 ],
 
-"hangout": [
+"casual": [
 {"top_color":"white","top_type":"printed tshirt","bottom_color":"cream","bottom_type":"cargo pants"},
 {"top_color":"baby pink","top_type":"cardigan","bottom_color":"dark blue","bottom_type":"jeggings"},
 {"top_color":"blue","top_type":"casual crop top","bottom_color":"white","bottom_type":"denim shorts"}
@@ -160,7 +160,7 @@ women = {
 {"top_color":"brown","top_type":"bodycon full length dress","bottom_color":"","bottom_type":""}
 ],
 
-"hangout": [
+"casual": [
 {"top_color":"black","top_type":"printed tee","bottom_color":"cream","bottom_type":"cargo pants"},
 {"top_color":"thulian pink","top_type":"hoodie","bottom_color":"dark blue","bottom_type":"jeggings"},
 {"top_color":"red","top_type":"fine knit top","bottom_color":"black","bottom_type":"wide leg leggings"}
@@ -188,7 +188,7 @@ women = {
 {"top_color":"blue","top_type":"bodycon dress","bottom_color":"","bottom_type":""}
 ],
 
-"hangout": [
+"casual": [
 {"top_color":"pink","top_type":"tank top","bottom_color":"white","bottom_type":"denim shorts"},
 {"top_color":"pastel yellow","top_type":"crop top","bottom_color":"dark blue","bottom_type":"jeggings"},
 {"top_color":"white","top_type":"printed tshirt","bottom_color":"cream","bottom_type":"cargo pants"}
@@ -216,7 +216,7 @@ women = {
 {"top_color":"brown","top_type":"bodycon full length dress","bottom_color":"","bottom_type":""}
 ],
 
-"hangout": [
+"casual": [
 {"top_color":"thulian pink","top_type":"hoodie","bottom_color":"dark blue","bottom_type":"jeggings"},
 {"top_color":"blue","top_type":"casual crop top","bottom_color":"white","bottom_type":"denim shorts"},
 {"top_color":"white","top_type":"printed tshirt","bottom_color":"dark blue","bottom_type":"jeans"}
@@ -349,7 +349,7 @@ def find_item(color, category, gender, occasion):
 
 def get_recommendations(user):
 
-    body_dict = men if user["gender"] == "male" else women
+    body_dict = male if user["gender"] == "male" else female
 
     outfits = body_dict[user["body_shape"]][user["occasion"]]
 
