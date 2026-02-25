@@ -88,7 +88,7 @@ male = {
 
 "fat": {
 "date": [
-{"top_color":"dark","top_type":"polo","bottom_color":"dark","bottom_type":"jeans"},
+{"top_color":"lilac","top_type":"polo","bottom_color":"dark blue","bottom_type":"jeans"},
 {"top_color":"black","top_type":"shirt","bottom_color":"grey","bottom_type":"jeans"},
 {"top_color":"white","top_type":"polo","bottom_color":"black","bottom_type":"jeans"}
 ],
