@@ -322,6 +322,7 @@ skin_tone_outfits = {
 
 # Load once (important)
 df = pd.read_excel("styleshop.xlsx")
+print(df.columns)
 df = df.fillna("")
 
 
