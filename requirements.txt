@@ -3,3 +3,6 @@ uvicorn
 gunicorn
 pandas
 openpyxl
+supabase
+python-dotenv
+qrcode[pil]
