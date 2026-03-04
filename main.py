@@ -6,6 +6,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from supabase import create_client
 from dotenv import load_dotenv
 
+# NEW imports for coupon + QR
+import secrets
+import qrcode
+import io
+import base64
+
+
 # Load environment variables
 load_dotenv()
 
@@ -45,3 +52,31 @@ def recommend(user: UserInput):
 def test_db():
     response = supabase.table("coupons").select("*").limit(1).execute()
     return response.data
+
+
+# -------- GENERATE COUPON + QR --------
+@app.get("/generate-coupon")
+def generate_coupon():
+
+    # generate coupon code
+    coupon_code = "STYLE" + secrets.token_hex(3).upper()
+
+    # insert into Supabase DB
+    supabase.table("coupons").insert({
+        "coupon_code": coupon_code,
+        "discount": 10
+    }).execute()
+
+    # create QR code
+    qr = qrcode.make(coupon_code)
+
+    buffer = io.BytesIO()
+    qr.save(buffer, format="PNG")
+    buffer.seek(0)
+
+    qr_base64 = base64.b64encode(buffer.getvalue()).decode()
+
+    return {
+        "coupon_code": coupon_code,
+        "qr_image": qr_base64
+    }
