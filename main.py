@@ -80,3 +80,31 @@ def generate_coupon():
         "coupon_code": coupon_code,
         "qr_image": qr_base64
     }
+
+class CouponVerify(BaseModel):
+    coupon_code: str
+
+
+@app.post("/verify-coupon")
+def verify_coupon(data: CouponVerify):
+
+    code = data.coupon_code
+
+    # find coupon in DB
+    result = supabase.table("coupons").select("*").eq("coupon_code", code).execute()
+
+    if not result.data:
+        return {"status": "invalid coupon"}
+
+    coupon = result.data[0]
+
+    if coupon["is_used"]:
+        return {"status": "coupon already used"}
+
+    # mark coupon as used
+    supabase.table("coupons").update({"is_used": True}).eq("coupon_code", code).execute()
+
+    return {
+        "status": "valid",
+        "discount": coupon["discount"]
+    }
