@@ -108,8 +108,4 @@ def verify_coupon(data: CouponVerify):
         "valid": True,
         "discount": coupon["discount"],
         "type": "percentage"
-<<<<<<< HEAD
-    }
-=======
-    }
->>>>>>> d14a68d (Saving pending changes)
+
