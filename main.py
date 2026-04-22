@@ -55,20 +55,20 @@ def test_db():
 
 
 # -------- GENERATE COUPON + QR --------
-@app.get("/generate-coupon")
+@app.post("/generate-coupon")
 def generate_coupon():
 
     # generate coupon code
-    coupon_code = "STYLE" + secrets.token_hex(3).upper()
+    couponCode = "STYLE" + secrets.token_hex(3).upper()
 
     # insert into Supabase DB
     supabase.table("coupons").insert({
-        "coupon_code": coupon_code,
+        "couponCode": couponCode,
         "discount": 10
     }).execute()
 
     # create QR code
-    qr = qrcode.make(coupon_code)
+    qr = qrcode.make(couponCode)
 
     buffer = io.BytesIO()
     qr.save(buffer, format="PNG")
@@ -77,34 +77,35 @@ def generate_coupon():
     qr_base64 = base64.b64encode(buffer.getvalue()).decode()
 
     return {
-        "coupon_code": coupon_code,
+        "couponCode": couponCode,
         "qr_image": qr_base64
     }
 
 class CouponVerify(BaseModel):
-    coupon_code: str
+    couponCode: str
 
 
 @app.post("/verify-coupon")
 def verify_coupon(data: CouponVerify):
 
-    code = data.coupon_code
+    code = data.couponCode
 
     # find coupon in DB
-    result = supabase.table("coupons").select("*").eq("coupon_code", code).execute()
+    result = supabase.table("coupons").select("*").eq("couponCode", code).execute()
 
     if not result.data:
-        return {"status": "invalid coupon"}
+        return {"valid": False}
 
     coupon = result.data[0]
 
     if coupon["is_used"]:
-        return {"status": "coupon already used"}
+        return {"valid": False, "message": "already used"}
 
     # mark coupon as used
-    supabase.table("coupons").update({"is_used": True}).eq("coupon_code", code).execute()
+    supabase.table("coupons").update({"is_used": True}).eq("couponCode", code).execute()
 
     return {
-        "status": "valid",
-        "discount": coupon["discount"]
+        "valid": True,
+        "discount": coupon["discount"],
+        "type": "percentage"
     }
