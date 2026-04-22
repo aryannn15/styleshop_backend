@@ -1,411 +1,111 @@
-import pandas as pd
-
-male = {
-
-"slim": {
-"date": [
-{"top_color":"sky blue","top_type":"full sleeve shirt","bottom_color":"dark blue","bottom_type":"jeans"},
-{"top_color":"white","top_type":"polo","bottom_color":"grey","bottom_type":"jeans"},
-{"top_color":"sage green","top_type":"half sleeve shirt","bottom_color":"light blue","bottom_type":"jeans"}
-],
-
-"party": [
-{"top_color":"black","top_type":"printed tee","bottom_color":"black","bottom_type":"jeans"},
-{"top_color":"tie dye","top_type":"shirt","bottom_color":"grey","bottom_type":"jeans"},
-{"top_color":"black","top_type":"striped shirt","bottom_color":"dark blue","bottom_type":"jeans"}
-],
-
-"casual": [
-{"top_color":"black","top_type":"hoodie","bottom_color":"light blue","bottom_type":"jeans"},
-{"top_color":"peach","top_type":"printed tee","bottom_color":"","bottom_type":"shorts"},
-{"top_color":"sage green","top_type":"shirt","bottom_color":"grey","bottom_type":"jeans"}
-],
-
-"formal": [
-{"top_color":"sky blue","top_type":"shirt","bottom_color":"beige","bottom_type":"formal pants"},
-{"top_color":"white","top_type":"striped full sleeve","bottom_color":"navy","bottom_type":"formal pants"},
-{"top_color":"black","top_type":"polo","bottom_color":"grey","bottom_type":"formal pants"}
-]
-},
-
-# --------------------
-
-"athletic": {
-"date": [
-{"top_color":"black","top_type":"polo","bottom_color":"grey","bottom_type":"jeans"},
-{"top_color":"white","top_type":"polo","bottom_color":"dark blue","bottom_type":"jeans"},
-{"top_color":"lilac","top_type":"polo","bottom_color":"light blue","bottom_type":"jeans"}
-],
-
-"party": [
-{"top_color":"orange","top_type":"printed tee","bottom_color":"black","bottom_type":"jeans"},
-{"top_color":"charcoal","top_type":"printed tee","bottom_color":"grey","bottom_type":"jeans"},
-{"top_color":"navy","top_type":"printed tee","bottom_color":"dark blue","bottom_type":"jeans"}
-],
-
-"casual": [
-{"top_color":"blue","top_type":"hoodie","bottom_color":"light","bottom_type":"jeans"},
-{"top_color":"white","top_type":"printed tee","bottom_color":"","bottom_type":"shorts"},
-{"top_color":"black","top_type":"hoodie","bottom_color":"","bottom_type":"cargo pants"}
-],
-
-"formal": [
-{"top_color":"white","top_type":"full sleeve","bottom_color":"black","bottom_type":"formal pants"},
-{"top_color":"sky blue","top_type":"shirt","bottom_color":"grey","bottom_type":"formal pants"},
-{"top_color":"black","top_type":"polo","bottom_color":"navy","bottom_type":"formal pants"}
-]
-},
-
-# --------------------
-
-"muscular": {
-"date": [
-{"top_color":"black","top_type":"overshirt","bottom_color":"dark","bottom_type":"jeans"},
-{"top_color":"white","top_type":"polo","bottom_color":"grey","bottom_type":"jeans"},
-{"top_color":"red check","top_type":"overshirt","bottom_color":"black","bottom_type":"jeans"}
-],
-
-"party": [
-{"top_color":"black","top_type":"tee","bottom_color":"","bottom_type":"cargo pants"},
-{"top_color":"denim","top_type":"jacket","bottom_color":"black","bottom_type":"jeans"},
-{"top_color":"ochre","top_type":"leather jacket","bottom_color":"dark","bottom_type":"jeans"}
-],
-
-"casual": [
-{"top_color":"pine","top_type":"hoodie","bottom_color":"","bottom_type":"cargo pants"},
-{"top_color":"graphic","top_type":"tee","bottom_color":"","bottom_type":"shorts"},
-{"top_color":"black","top_type":"hoodie","bottom_color":"grey","bottom_type":"jeans"}
-],
-
-"formal": [
-{"top_color":"white","top_type":"shirt","bottom_color":"navy","bottom_type":"formal pants"},
-{"top_color":"sky blue","top_type":"shirt","bottom_color":"grey","bottom_type":"formal pants"},
-{"top_color":"black","top_type":"polo","bottom_color":"black","bottom_type":"formal pants"}
-]
-},
-
-# --------------------
-
-"fat": {
-"date": [
-{"top_color":"lilac","top_type":"polo","bottom_color":"dark blue","bottom_type":"jeans"},
-{"top_color":"black","top_type":"shirt","bottom_color":"grey","bottom_type":"jeans"},
-{"top_color":"white","top_type":"polo","bottom_color":"black","bottom_type":"jeans"}
-],
-
-"party": [
-{"top_color":"black","top_type":"hoodie","bottom_color":"dark","bottom_type":"jeans"},
-{"top_color":"charcoal","top_type":"tee","bottom_color":"black","bottom_type":"jeans"},
-{"top_color":"denim","top_type":"jacket","bottom_color":"black","bottom_type":"jeans"}
-],
-
-"casual": [
-{"top_color":"black","top_type":"tee","bottom_color":"","bottom_type":"cargo pants"},
-{"top_color":"dark","top_type":"hoodie","bottom_color":"","bottom_type":"jeans"},
-{"top_color":"","top_type":"overshirt","bottom_color":"dark","bottom_type":"jeans"}
-],
-
-"formal": [
-{"top_color":"black","top_type":"shirt","bottom_color":"black","bottom_type":"formal pants"},
-{"top_color":"white","top_type":"shirt","bottom_color":"navy","bottom_type":"formal pants"},
-{"top_color":"sky blue","top_type":"shirt","bottom_color":"grey","bottom_type":"formal pants"}
-]
-}
-
-}
-
-
-female = {
-
-# =========================
-"pear": {
-
-"date": [
-{"top_color":"yellow","top_type":"blouse","bottom_color":"dark blue","bottom_type":"jeans"},
-{"top_color":"white","top_type":"halter neck top","bottom_color":"cream","bottom_type":"culottes"},
-{"top_color":"pink","top_type":"flounced blouse","bottom_color":"cream","bottom_type":"palazzo"}
-],
-
-"party": [
-{"top_color":"black","top_type":"strappy full length dress","bottom_color":"","bottom_type":""},
-{"top_color":"blue floral","top_type":"strappy full length dress","bottom_color":"","bottom_type":""},
-{"top_color":"silver","top_type":"halter neck sequined","bottom_color":"black","bottom_type":"wide leg leggings"}
-],
-
-"casual": [
-{"top_color":"white","top_type":"printed tshirt","bottom_color":"cream","bottom_type":"cargo pants"},
-{"top_color":"baby pink","top_type":"cardigan","bottom_color":"dark blue","bottom_type":"jeggings"},
-{"top_color":"blue","top_type":"casual crop top","bottom_color":"white","bottom_type":"denim shorts"}
-],
-
-"formal": [
-{"top_color":"caramel brown","top_type":"blazer","bottom_color":"black","bottom_type":"formal pants"},
-{"top_color":"white","top_type":"buttoned full sleeve shirt","bottom_color":"white","bottom_type":"formal pants"},
-{"top_color":"light blue","top_type":"full sleeve shirt","bottom_color":"khaki green","bottom_type":"formal pants"}
-]
-},
-
-# =========================
-"apple": {
-
-"date": [
-{"top_color":"yellow","top_type":"peplum top","bottom_color":"dark blue","bottom_type":"jeans"},
-{"top_color":"red","top_type":"peplum top","bottom_color":"black","bottom_type":"trouser"},
-{"top_color":"white","top_type":"shirt dress","bottom_color":"","bottom_type":""}
-],
-
-"party": [
-{"top_color":"black","top_type":"mini dress","bottom_color":"","bottom_type":""},
-{"top_color":"blue","top_type":"bodycon dress","bottom_color":"","bottom_type":""},
-{"top_color":"brown","top_type":"bodycon full length dress","bottom_color":"","bottom_type":""}
-],
-
-"casual": [
-{"top_color":"black","top_type":"printed tee","bottom_color":"cream","bottom_type":"cargo pants"},
-{"top_color":"thulian pink","top_type":"hoodie","bottom_color":"dark blue","bottom_type":"jeggings"},
-{"top_color":"red","top_type":"fine knit top","bottom_color":"black","bottom_type":"wide leg leggings"}
-],
-
-"formal": [
-{"top_color":"caramel brown","top_type":"blazer","bottom_color":"white","bottom_type":"formal pants"},
-{"top_color":"white","top_type":"buttoned full sleeve shirt","bottom_color":"black","bottom_type":"formal pants"},
-{"top_color":"light blue","top_type":"full sleeve shirt","bottom_color":"khaki green","bottom_type":"formal pants"}
-]
-},
-
-# =========================
-"rectangle": {
-
-"date": [
-{"top_color":"chocolate brown","top_type":"crop top sleeveless","bottom_color":"cream","bottom_type":"palazzo"},
-{"top_color":"beige","top_type":"tube top","bottom_color":"pink","bottom_type":"mini denim skirt"},
-{"top_color":"red","top_type":"halter neck top","bottom_color":"dark blue","bottom_type":"jeans"}
-],
-
-"party": [
-{"top_color":"black","top_type":"mini dress","bottom_color":"","bottom_type":""},
-{"top_color":"white floral","top_type":"strappy full length dress","bottom_color":"","bottom_type":""},
-{"top_color":"blue","top_type":"bodycon dress","bottom_color":"","bottom_type":""}
-],
-
-"casual": [
-{"top_color":"pink","top_type":"tank top","bottom_color":"white","bottom_type":"denim shorts"},
-{"top_color":"pastel yellow","top_type":"crop top","bottom_color":"dark blue","bottom_type":"jeggings"},
-{"top_color":"white","top_type":"printed tshirt","bottom_color":"cream","bottom_type":"cargo pants"}
-],
-
-"formal": [
-{"top_color":"light blue","top_type":"full sleeve shirt","bottom_color":"black","bottom_type":"formal pants"},
-{"top_color":"caramel brown","top_type":"blazer","bottom_color":"white","bottom_type":"formal pants"},
-{"top_color":"white","top_type":"buttoned full sleeve shirt","bottom_color":"khaki green","bottom_type":"formal pants"}
-]
-},
-
-# =========================
-"hourglass": {
-
-"date": [
-{"top_color":"brown","top_type":"off shoulder top","bottom_color":"dark blue","bottom_type":"jeans"},
-{"top_color":"white","top_type":"halter neck top","bottom_color":"cream","bottom_type":"culottes"},
-{"top_color":"pink","top_type":"flounced blouse","bottom_color":"pink","bottom_type":"mini denim skirt"}
-],
-
-"party": [
-{"top_color":"blue","top_type":"bodycon dress","bottom_color":"","bottom_type":""},
-{"top_color":"black","top_type":"mini dress","bottom_color":"","bottom_type":""},
-{"top_color":"brown","top_type":"bodycon full length dress","bottom_color":"","bottom_type":""}
-],
-
-"casual": [
-{"top_color":"thulian pink","top_type":"hoodie","bottom_color":"dark blue","bottom_type":"jeggings"},
-{"top_color":"blue","top_type":"casual crop top","bottom_color":"white","bottom_type":"denim shorts"},
-{"top_color":"white","top_type":"printed tshirt","bottom_color":"dark blue","bottom_type":"jeans"}
-],
-
-"formal": [
-{"top_color":"caramel brown","top_type":"blazer","bottom_color":"black","bottom_type":"formal pants"},
-{"top_color":"light blue","top_type":"full sleeve shirt","bottom_color":"white","bottom_type":"formal pants"},
-{"top_color":"white","top_type":"buttoned full sleeve shirt","bottom_color":"khaki green","bottom_type":"formal pants"}
-]
-}
-
-}
-
-
-skin_tone_outfits = {
-
-"porcelain": [
-    "Navy ",
-    "Sky blue ",
-    "Lilac ",
-    "Peach ",
-    "Red ",
-    "Silver "
-],
-
-"ivory": [
-    "Sky blue",
-    "Lilac",
-    "Pink",
-    "Baby pink",
-    "Sage green",
-    "Red"
-],
-
-"fair_beige": [
-    "Peach",
-    "Sage green",
-    "Red",
-    "Caramel brown",
-    "Lilac",
-    "Navy"
-],
-
-"beige": [
-    "Navy",
-    "Blue",
-    "Lilac",
-    "Red",
-    "Chocolate brown",
-    "Pink"
-],
-
-"warm_beige": [
-    "Peach",
-    "Orange",
-    "Ochre",
-    "Caramel brown",
-    "Khaki green",
-    "Peanut brown"
-],
-
-"dark_beige": [
-    "Navy",
-    "Cream",
-    "Orange",
-    "Red",
-    "Pine green",
-    "Caramel brown"
-],
-
-"natural": [
-    "Blue",
-    "Sky blue",
-    "White",
-    "Red",
-    "Pink",
-    "Sage green"
-],
-
-"honey": [
-    "White",
-    "Cream",
-    "Blue",
-    "Peach",
-    "Red",
-    "Chocolate brown"
-],
-
-
-
-"almond": [
-    "White ",
-    "Lilac ",
-    "Sky blue",
-    "Red",
-    "Peanut brown",
-    "Pink"
-],
-
-
-}
-
-# Load once (important)
-df = pd.read_excel("styleshop.xlsx")
-print(df.columns)
-df = df.fillna("")
-
-
-df["color"] = df["color"].str.lower().str.strip()
-df["category"] = df["category"].str.lower().str.strip()
-df["gender"] = df["gender"].str.lower().str.strip()
-df["occasion"] = df["occasion"].str.lower().str.strip()
-
-
-def find_item(color, category, gender, occasion):
-    color = color.lower().strip()
-
-    match = df[
-        (df["color"] == color) &
-        (df["category"] == category) &
-        (df["gender"] == gender) &
-        (df["occasion"].str.contains(occasion))
-    ]
-
-    if len(match) > 0:
-        return match.iloc[0].to_dict()
-
-     
-    # Fallback: ignore color, return any item for this category+gender+occasion
-
-    fallback = df[
-
-        (df["category"] == category) &
-
-        (df["gender"] == gender) &
-
-        (df["occasion"].str.contains(occasion, na=False))
-
-    ]
-
-    if len(fallback) > 0:
-
-      return fallback.iloc[0].to_dict()
-
-    return None  
-
-
-def get_recommendations(user):
-
-    body_dict = male if user["gender"] == "male" else female
-
-    outfits = body_dict[user["body_shape"]][user["occasion"]]
-
-    preferred_colors = [
-        c.lower().strip()
-        for c in skin_tone_outfits[user["skin_tone"]]
-    ]
-
-    scored_outfits = []
-
-    for outfit in outfits:
-        score = 2 if outfit["top_color"].lower() in preferred_colors else 0
-        scored_outfits.append((score, outfit))
-
-    scored_outfits.sort(reverse=True, key=lambda x: x[0])
-
-    results = []
-
-    for score, outfit in scored_outfits[:3]:
-
-        top_item = find_item(
-            outfit["top_color"],
-            "top",
-            user["gender"],
-            user["occasion"]
-        )
-
-        bottom_item = find_item(
-            outfit["bottom_color"],
-            "bottom",
-            user["gender"],
-            user["occasion"]
-        )
-
-        results.append({
-            "score": score,
-            "top": top_item,
-            "bottom": bottom_item
-        })
-
-    return results
+import os
+from fastapi import FastAPI
+from pydantic import BaseModel
+from recommendations import get_recommendations
+from fastapi.middleware.cors import CORSMiddleware
+from supabase import create_client
+from dotenv import load_dotenv
+
+# NEW imports for coupon + QR
+import secrets
+import qrcode
+import io
+import base64
+
+
+# Load environment variables
+load_dotenv()
+
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+app = FastAPI()
+
+# CORS (safe for demo — tighten later in production)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Health check route
+@app.get("/")
+def root():
+    return {"status": "Backend is running"}
+
+class UserInput(BaseModel):
+    gender: str
+    body_shape: str
+    occasion: str
+    skin_tone: str
+
+@app.post("/recommend")
+def recommend(user: UserInput):
+    return get_recommendations(user.dict())
+
+# -------- TEST SUPABASE CONNECTION --------
+@app.get("/test-db")
+def test_db():
+    response = supabase.table("coupons").select("*").limit(1).execute()
+    return response.data
+
+
+# -------- GENERATE COUPON + QR --------
+@app.post("/generate-coupon")
+def generate_coupon():
+
+    # generate coupon code
+    couponCode = "STYLE" + secrets.token_hex(3).upper()
+
+    # insert into Supabase DB
+    supabase.table("coupons").insert({
+        "couponCode": couponCode,
+        "discount": 10
+    }).execute()
+
+    # create QR code
+    qr = qrcode.make(couponCode)
+
+    buffer = io.BytesIO()
+    qr.save(buffer, format="PNG")
+    buffer.seek(0)
+
+    qr_base64 = base64.b64encode(buffer.getvalue()).decode()
+
+    return {
+        "couponCode": couponCode,
+        "qr_image": qr_base64
+    }
+
+class CouponVerify(BaseModel):
+    couponCode: str
+
+
+@app.post("/verify-coupon")
+def verify_coupon(data: CouponVerify):
+
+    code = data.couponCode
+
+    # find coupon in DB
+    result = supabase.table("coupons").select("*").eq("couponCode", code).execute()
+
+    if not result.data:
+        return {"valid": False}
+
+    coupon = result.data[0]
+
+    if coupon["is_used"]:
+        return {"valid": False, "message": "already used"}
+
+    # mark coupon as used
+    supabase.table("coupons").update({"is_used": True}).eq("couponCode", code).execute()
+
+    return {
+        "valid": True,
+        "discount": coupon["discount"],
+        "type": "percentage"
+    }
