@@ -345,7 +345,24 @@ def find_item(color, category, gender, occasion):
     if len(match) > 0:
         return match.iloc[0].to_dict()
 
-    return None
+     
+    # Fallback: ignore color, return any item for this category+gender+occasion
+
+    fallback = df[
+
+        (df["category"] == category) &
+
+        (df["gender"] == gender) &
+
+        (df["occasion"].str.contains(occasion, na=False))
+
+    ]
+
+    if len(fallback) > 0:
+
+      return fallback.iloc[0].to_dict()
+
+    return None  
 
 
 def get_recommendations(user):
